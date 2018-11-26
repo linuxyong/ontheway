@@ -1,0 +1,23 @@
+@startuml
+
+title DispatcherServlet - Class Diagram
+
+
+class ServletInvocableHandlerMethod
+class RequestMappingHandlerAdapter
+class AbstractHandlerMethodAdapter
+class DispatcherServlet
+class FrameworkServlet
+class AbstractTopControllerHandlerAdapter
+class AnnotationTopControllerHandlerAdapter
+
+
+AbstractHandlerMethodAdapter <|-down- RequestMappingHandlerAdapter: Inheritance
+FrameworkServlet <|-down-  DispatcherServlet: Inheritance
+AbstractTopControllerHandlerAdapter <|-down- AnnotationTopControllerHandlerAdapter : Inheritance
+
+RequestMappingHandlerAdapter -> ServletInvocableHandlerMethod : invokeHandlerMethod
+DispatcherServlet -> AnnotationTopControllerHandlerAdapter : doDispatch
+AnnotationTopControllerHandlerAdapter -> RequestMappingHandlerAdapter : doHandle
+
+@enduml
