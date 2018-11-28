@@ -1,0 +1,97 @@
+@startuml
+
+' class definition
+Interface Iterable
+Interface Future
+Interface ChannelFuture
+Interface ChannelHandler
+Interface ChannelPromise
+Interface Promise
+Interface ChannelInboundHandler
+Interface ChannelOutboundHandler
+
+Interface AttributeMap
+Class DefaultAttributeMap
+Interface ChannelPipeline
+Interface ChannelHandlerContext
+Interface ChannelInboundInvoker
+Interface ChannelOutboundInvoker
+
+Interface EventLoopGroup
+Interface EventExecutorGroup
+Interface ScheduledExecutorService
+Interface Comparable
+
+Class ChannelHandlerAdapter
+
+Class ChannelInboundHandlerAdapter
+
+Class NioEventLoopGroup
+Class MultithreadEventLoopGroup
+Class AbstractEventExecutorGroup
+Class MultithreadEventExecutorGroup
+
+Class NioServerSocketChannel
+Class AbstractNioMessageChannel
+Interface ServerSocketChannel
+Class AbstractNioChannel
+Class AbstractChannel
+Interface Channel
+Interface ServerChannel
+Interface ServerSocketChannel
+
+Interface SocketChannel
+Interface DuplexChannel
+
+
+' Inheritance relationship
+Future <|-- ChannelFuture: Extends
+ChannelFuture <|-- ChannelPromise :Extends
+Promise <|-- ChannelPromise: Extends
+ChannelHandler <|-- ChannelHandlerAdapter: Extends
+ChannelHandler <|-- ChannelInboundHandler: Extends
+ChannelHandler <|-- ChannelOutboundHandler: Extends
+
+AttributeMap <|-- ChannelHandlerContext: Extends
+ChannelInboundInvoker <|-- ChannelHandlerContext: Extends
+ChannelOutboundInvoker <|-- ChannelHandlerContext: Extends
+
+ChannelInboundInvoker <|-- ChannelPipeline: Extends
+ChannelOutboundInvoker <|-- ChannelPipeline: Extends
+Iterable <|-- ChannelPipeline: Extends
+
+ChannelHandlerAdapter <|-- ChannelInboundHandlerAdapter: Extends
+ChannelInboundHandler <|-- ChannelInboundHandlerAdapter: Implement
+
+ScheduledExecutorService <|-- EventExecutorGroup: Extends
+EventExecutorGroup <|-- EventLoopGroup: Extends
+
+AbstractEventExecutorGroup <|-- MultithreadEventExecutorGroup: Extends
+EventExecutorGroup <|-- AbstractEventExecutorGroup: Implement
+MultithreadEventExecutorGroup <|-- MultithreadEventLoopGroup: Extends
+EventLoopGroup <|-- MultithreadEventLoopGroup: Implement
+MultithreadEventLoopGroup <|-- NioEventLoopGroup: Extends
+
+ServerSocketChannel <|-- NioServerSocketChannel: Implement
+AbstractNioMessageChannel <|-- NioServerSocketChannel: Extends
+
+AttributeMap <|-- DefaultAttributeMap: Implement
+
+AttributeMap <|-- Channel: Extends
+ChannelOutboundInvoker <|-- Channel: Extends
+Comparable <|-- Channel: Extends
+
+DefaultAttributeMap <|-- AbstractChannel: Extends
+Channel <|-- AbstractChannel: Implement
+
+AbstractChannel <|-- AbstractNioChannel: Extends
+AbstractNioChannel <|-- AbstractNioMessageChannel: Extends
+
+ServerChannel <|-- ServerSocketChannel: Extends
+Channel <|-- ServerChannel: Extends
+
+Channel <|-- DuplexChannel: Extends
+DuplexChannel <|-- SocketChannel: Extends
+
+
+@enduml

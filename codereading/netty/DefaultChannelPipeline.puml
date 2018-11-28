@@ -1,0 +1,8 @@
+@startuml
+
+Class DefaultChannelPipeline {
+AbstractChannelHandlerContext head;
+AbstractChannelHandlerContext tail;
+}
+
+@enduml

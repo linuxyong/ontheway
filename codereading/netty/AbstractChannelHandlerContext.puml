@@ -1,0 +1,20 @@
+@startuml
+
+Class AbstractChannelHandlerContext {
+    AbstractChannelHandlerContext next;
+    AbstractChannelHandlerContext prev;
+
+     boolean inbound;
+     boolean outbound;
+     DefaultChannelPipeline pipeline;
+     String name;
+     boolean ordered;
+     EventExecutor executor;
+     ChannelFuture succeededFuture;
+     Runnable invokeChannelReadCompleteTask;
+     Runnable invokeReadTask;
+     Runnable invokeChannelWritableStateChangedTask;
+     Runnable invokeFlushTask;
+}
+
+@enduml
